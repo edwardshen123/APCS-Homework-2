@@ -1,0 +1,22 @@
+maze.java & maze.dat
+	- Pathfinding
+	- Search
+		- Blind Search
+		- Depth First Search
+			- Tries to go down one path as far as possible before
+			  return
+		- Linear Search
+		- Search w/ Backtracking
+		- State Space Search
+			- State: state of the program's world
+			- The code transitions the program to different states
+			  to find the path from starting to end state
+			- Nodes: the states & Edges: The transitions
+		
+	- Cons:
+		- Branching Factor: Branching program causing a exponential program
+		
+
+- Heuristic Search
+	- Follows a guideline instead of blind search
+	
