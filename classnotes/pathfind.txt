@@ -20,3 +20,34 @@ maze.java & maze.dat
 - Heuristic Search
 	- Follows a guideline instead of blind search
 	
+
+- State Space Search
+	- Maze Solver
+	- Path Finding
+	- 15 Puzzle
+	- Rubex Cube
+
+- State Machine uses State Space Methods
+
+- Chess
+	- Initial State: Board w/ all pieces set up
+	- End States: Checkmates & Draws
+	- Difficulties: Multiple end states, 
+			objects within states can be taken out,
+	        	branching factor is vast, 
+			2nd player
+	- Solution: use Heuristic strategy to find next best move (standard openings, end game, and position maximization),
+		    mini-max searching, 
+	            multi-depth searches,
+		    alpha beta prune,
+
+Mini-Max Search: computing best moves and worst moves for the ai and for player,
+for first, second and many moves down the line,
+and compute the difference to find the best move for the ai.
+                    
+alpha beta prune: takes the worst moves and toss them.
+
+- Go
+
+- RPG
+	- Multi-States: Wander State, Chasing State, Combat State
