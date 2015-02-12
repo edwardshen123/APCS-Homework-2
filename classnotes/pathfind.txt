@@ -51,3 +51,9 @@ alpha beta prune: takes the worst moves and toss them.
 
 - RPG
 	- Multi-States: Wander State, Chasing State, Combat State
+
+- Implicit Data Structure
+	- Node creation and destruction through recursive method calls
+
+- Explicit Data Structure
+	- Calling methods and ending methods
