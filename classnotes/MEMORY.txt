@@ -1,0 +1,9 @@
+Heap: Where all instances are stored
+Stack: Where methods and local variables goes
+Holds the memory address of variables on Heap
+Return address: goes back to the stack indicate by return address
+
+Recursion:
+Stacks upon stacks until if statement is satisfied
+
+Base case

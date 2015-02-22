@@ -1,0 +1,16 @@
+Getting out of the maze
+	-Greek
+		Theseus: String
+	-German
+		Hansel & Gretel: Bread Crumbs
+
+Through coding: Recursive
+
+solve(x,y)
+	-Done if @ exit
+	-return if in a wall
+	-----------------------
+	-Solve(x+1,y)
+	-Solve(x-1,y)
+	-solve(x,y+1)
+	-solve(x,y-1)
