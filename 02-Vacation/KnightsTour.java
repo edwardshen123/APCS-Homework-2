@@ -12,15 +12,17 @@ public class KnightsTour {
     public int KnX;
     public int KnY;
     
-    private int delayTimer = 0;
+    private boolean solved = false;
+
+    private int delayTimer = 10;
     private String ANSI_ESC = "\033\143";
 
     public KnightsTour() {
-	this(5, 5, 0, 0);
+	this(5, 5, 2, 2);
     }
 
     public KnightsTour(int boardX, int boardY, int KnX, int KnY) {
-	stepsCounter = 0;
+	stepsCounter = 1;
 	
 	this.boardX = boardX;
 	this.boardY = boardY;
@@ -41,6 +43,46 @@ public class KnightsTour {
     }
 
     public void Move(int KnX, int KnY) {
+
+	delay();
+
+	toString();
+
+	System.out.println(KnX);
+	System.out.println(KnY);
+
+	if (KnX < 0 || KnY < 0 ||
+	    KnX >= boardX || KnY >= boardY) {
+	    return;
+	}
+
+	if (board[KnY][KnX] != notVisited && board[KnY][KnX] != Knight) {
+	    return;
+	}
+
+	if (solved) {
+	    return;
+	}
+
+	if (stepsCounter == boardX * boardY) {
+	    solved = true;
+	    System.out.println(solved);
+	}
+	
+	board[KnY][KnX] = "" + stepsCounter;
+	stepsCounter++;
+
+	Move(KnX + 2, KnY + 1);
+	Move(KnX + 2, KnY - 1);
+	Move(KnX - 2, KnY + 1);
+	Move(KnX - 2, KnY - 1);
+	Move(KnX + 1, KnY + 2);
+	Move(KnX + 1, KnY - 2);
+	Move(KnX - 1, KnY + 2);
+	Move(KnX - 1, KnY - 2);
+
+	board[KnY][KnX] = notVisited;
+	stepsCounter--;
     }
 
     public void delay() {
@@ -66,7 +108,6 @@ public class KnightsTour {
 
     public static void main(String[] args) {
 	KnightsTour kt = new KnightsTour();
-	kt.move(kt.KnX, kt.KnY);
-	kt.toString();
+	kt.Move(kt.KnX, kt.KnY);
     }
 }
