@@ -14,7 +14,7 @@ public class KnightsTour {
     
     private boolean solved = false;
 
-    private int delayTimer = 10;
+    private int delayTimer = 0;
     private String ANSI_ESC = "\033\143";
 
     public KnightsTour() {
@@ -81,8 +81,10 @@ public class KnightsTour {
 	Move(KnX - 1, KnY + 2);
 	Move(KnX - 1, KnY - 2);
 
-	board[KnY][KnX] = notVisited;
-	stepsCounter--;
+	if (!solved) {
+	    board[KnY][KnX] = notVisited;
+	    stepsCounter--;
+	}
     }
 
     public void delay() {
