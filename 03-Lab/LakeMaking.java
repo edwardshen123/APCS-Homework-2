@@ -1,3 +1,5 @@
+import java.util.Random;
+
 public class LakeMaking {
 
     private Random randInt = new Random();
@@ -7,7 +9,7 @@ public class LakeMaking {
     private int pastureY;
     
     public LakeMaking() {
-	LakeMaking(6, 4);
+	this(6, 4);
     }
 
     public LakeMaking(int pastureX, int pastureY) {
@@ -23,21 +25,54 @@ public class LakeMaking {
     }
     
     public void stomp(int y, int x, int stomps) {
-	if (y >= pastureY - 3 || y < 0 ||
-	    x >= pastureX - 3 || x < 0) {
-	    return;
+        int maxVal = 0;
+	for (int r = y; r < y + 3; r++) {
+	    for (int c = x; c < x + 3; c++) {
+		if (pasture[r][c] > maxVal) {
+		    maxVal = pasture[r][c];
+		}
+	    }
 	}
-	if (stomps = 0) {
-	    return;
+
+	for (int r = y; r < y + 3; r++) {
+	    for (int c = x; c < x + 3; c++) {
+		int stompsRemoved = pasture[r][c] - maxVal;
+		pasture[r][c] -= stomps + stompsRemoved;
+	    }
 	}
-	
-	stomp(y, x, stomps - 1);
     }
 
-    public int depth() {
+    public int TDepth(int lakeElevation) {
+	int lakeTDepth = 0;
+
+	for (int r = 0; r < pastureY; r++) {
+	    for (int c = 0; c < pastureX; c++) {
+		if (lakeElevation - pasture[r][c] > 0) {
+		    lakeTDepth += lakeElevation - pasture[r][c];
+		}
+	    }
+	}
+	
+	return lakeTDepth;
     }
 
     public int volume() {
+	return 72 * 72 * TDepth(22);
+    }
+
+    public String toString() {
+	String s = "";
+	for (int r = 0; r < pastureY; r++) {
+	    for (int c = 0; c < pastureX; c++) {
+		s += String.format("%3d", pasture[r][c]);
+	    }
+	}
+	return s;
+    }
+
+    public static void main(String[] args) {
+	LakeMaking lk = new LakeMaking();
+	System.out.println(lk);
     }
     
 }
