@@ -1,0 +1,18 @@
+- Insertion
+	- Insert the nth element into the already sorted sublist of length
+	n - 1
+- Selection
+	- select the nth smallest value and swap with element in location n
+
+new sort (Deck) [merge sort]
+	- split the deck in half and half again to sort
+	- At 2 or 1 cards per person, sort
+	- Return to n - 1th person, look at the top of both decks and take the lower of the two into a new pile
+
+
+	if (length(Deck) <= 1) {
+		return Deck;
+	}
+	R1 = mergeSort(A)
+	R2 = mergeSort(B)
+	returns merge(R1, R2)
