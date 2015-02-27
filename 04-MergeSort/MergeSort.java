@@ -69,15 +69,18 @@ public class MergeSort {
 	    return a;
 	}
 
-	int[] b = new int[a.length / 2];
-	int[] c = new int[a.length - a.length / 2];
+	int length = a.length;
+	
+	int[] b = new int[length / 2];
+	int[] c = new int[length - a.length / 2];
+	int cIndex = 0;
 
-	for (int aIndex = 0; aIndex < a.length; aIndex++) {
-	    if (aIndex < a.length / 2) {
+        for (int aIndex = 0; aIndex < length; aIndex++) {
+	    if (aIndex < length / 2) {
 		b[aIndex] = a[aIndex];
 	    } else {
-		System.out.println(aIndex);
-		c[aIndex + a.length /  2 - a.length] = a[aIndex];
+		c[cIndex] = a[aIndex];
+		cIndex++;
 	    }
 	}
 
@@ -85,6 +88,19 @@ public class MergeSort {
 	c = sort(c);
 
 	return merge(b, c);
+    }
+
+    public static String toString(int[] a) {
+	String s = "{";
+	for (int aIndex = 0; aIndex < a.length; aIndex++) {
+	    if (aIndex < a.length - 1) {
+		s += a[aIndex] + ", ";
+	    } else {
+		s += a[aIndex];
+	    }
+	}
+	s += "}\n";
+	return s;
     }
     
     public static void main(String[] args) {
@@ -112,6 +128,6 @@ public class MergeSort {
 	*/
 
 	int[] a = {34, 234, 10, 30, 2, 9};
-	System.out.println(MergeSort.sort(a));
+	System.out.println(toString(MergeSort.sort(a)));
     }
 }
