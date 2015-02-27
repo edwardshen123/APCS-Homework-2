@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Random;
 
 public class MergeSort {
 
@@ -105,29 +106,27 @@ public class MergeSort {
     
     public static void main(String[] args) {
 	/*
+	Random rand = new Random();
 	ArrayList<Integer> a = new ArrayList<Integer>();
 	ArrayList<Integer> b = new ArrayList<Integer>();
-	a.add(1);
-	a.add(2);
-	a.add(3);
-	a.add(4);
-	a.add(5);
-	b.add(0);
-	b.add(3);
-	b.add(4);
-	b.add(6);
-	b.add(7);
+	for (int aIndex = 0; aIndex < 5; aIndex++) {
+	    a.add(rand.nextInt(50) * (aIndex + 1));
+	}
+	for (int bIndex = 0; bIndex < 5; bIndex++) {
+	    b.add(rand.nextInt(50) * (bIndex + 1));
+	}
+	System.out.println(a);
+	System.out.println(b);
 	System.out.println(MergeSort.merge(a, b));
 	ArrayList<Integer> c = new ArrayList<Integer>();
-	c.add(10);
-	c.add(4);
-	c.add(5);
-	c.add(0);
-	c.add(3);
+	for (int cIndex = 0; cIndex < 5; cIndex++) {
+	    c.add(rand.nextInt(50));
+	}
+	System.out.println(c);
 	System.out.println(MergeSort.sort(c));
 	*/
 
-	int[] a = {34, 234, 10, 30, 2, 9};
-	System.out.println(toString(MergeSort.sort(a)));
+	int[] d = {34, 234, 10, 30, 2, 9};
+	System.out.println(toString(MergeSort.sort(d)));
     }
 }
