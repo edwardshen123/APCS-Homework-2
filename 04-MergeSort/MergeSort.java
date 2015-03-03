@@ -3,6 +3,7 @@ import java.util.Random;
 
 public class MergeSort {
 
+    //ArrayList - slower
     public static ArrayList<Integer> merge(ArrayList<Integer> a, ArrayList<Integer> b) {
 	ArrayList<Integer> c = new ArrayList<Integer>();
 	while (a.size() > 0 && b.size() > 0) {
@@ -37,6 +38,7 @@ public class MergeSort {
 	return merge(A1, A2);
     }
 
+    //Array - faster
     public static int[] merge(int[] a, int[] b) {
 	int[] c = new int[a.length + b.length];
 	int aIndex = 0;
