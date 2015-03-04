@@ -1,0 +1,21 @@
+Big O Notation
+--------------
+
+a function f(x) is said to be O(g(x))
+--> order g(x) or Big O g(x)
+if there exists some constant k, such that
+kg(x) > f(x) over the long term
+
+ex:
+runtime: 2n^2 ~ O(n^2)
+
+best-worst runtime
+O(1)
+O(log(n))
+O(n)
+O(nlog(n))
+O(n^2)
+O(n^3)
+O(n^4)
+O(2^n)
+O(n!)
