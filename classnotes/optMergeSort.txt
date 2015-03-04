@@ -1,0 +1,6 @@
+memcpy(source,address,bit)
+
+use two arrays only
+
+use arrays
+
