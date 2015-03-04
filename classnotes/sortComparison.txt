@@ -1,0 +1,30 @@
+iSort & sSort ~ n^2 run time
+
+==============================================
+
+mergeSort
+---------
+
+[                32                ]
+[       16       ][       16       ]
+[   8   ][   8   ][   8   ][   8   ]
+[ 4 ][ 4][ 4 ][ 4][4 ][ 4 ][4 ][ 4 ]
+.
+.
+.
+
+5 layers of splits
+
+- Every doubling of data size adds only one more layer
+
+- Has log(n) (base 2) layers
+
+Split
+- Going from one layer to the next: only needs to look at n
+( size of the array ) items
+Merge
+- Going from one layer to a higher layer: looks through n items
+
+- MergeSort: 2nlog(n)
+
+- Similar to binary search: runtime = log(n)
