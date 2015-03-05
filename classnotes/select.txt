@@ -1,0 +1,10 @@
+select(3rd, L): select 3rd smallest in list L
+
+select a pivot value
+
+loop through list: if value > pivot value, place to end
+if value < pivot value, place to front
+eventually place pivot value into its proper place
+delete all elements from pivot value onward if k < pivot value index
+visa versa if opposite
+(select (k, L, startIndex, endIndex) : recursive)

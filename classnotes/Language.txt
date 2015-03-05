@@ -10,7 +10,7 @@ ex:
 runtime: 2n^2 ~ O(n^2)
 
 best-worst runtime
-O(1)
+O(k)
 O(log(n))
 O(n)
 O(nlog(n))
@@ -19,3 +19,11 @@ O(n^3)
 O(n^4)
 O(2^n)
 O(n!)
+
+ex: runtime: n^2 + 30 nlog(n) --> O(n^2)
+
+fastest runtime: constant
+next: log(n)
+
+2^n: tower problem
+n!: blind search
