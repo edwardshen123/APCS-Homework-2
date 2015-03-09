@@ -11,7 +11,7 @@ public class selection {
 	swap(A, (l + h) / 2, high);
 	high--;
 	while (low < high) {
-	    if (A[low] < pivot) {
+	    if (A[low] <= pivot) {
 		low++;
 	    } else {
 		swap(A, low, high);
