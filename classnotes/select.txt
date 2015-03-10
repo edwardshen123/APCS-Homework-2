@@ -8,3 +8,25 @@ eventually place pivot value into its proper place
 delete all elements from pivot value onward if k < pivot value index
 visa versa if opposite
 (select (k, L, startIndex, endIndex) : recursive)
+
+select quick sort
+
+Best Case:
+Each layer: runs n items
+log2(n) layers
+
+RunTime: nlog2(n)
+
+Worst Case:
+if pivot is always on edge:
+RunTime: O(n^2)
+
+How to get best case:
+Use quick select to find best pivot
+or
+take first, mid, and last and take median of the three
+
+Compare mergeSort and QuickSort
+QuickSort - in place, not guaranteed, highly optimized is better, harder to write
+mergeSort - not in place (need more memory), guaranteed nlog(n), easier to write
+

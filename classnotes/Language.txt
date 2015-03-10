@@ -27,3 +27,13 @@ next: log(n)
 
 2^n: tower problem
 n!: blind search
+
+k - eqn
+log(n) - Dividing sample size
+n - simple loop
+nlog(n)
+n^2 - loop in loop
+n^3
+n^4
+2^n - try all possibilities
+n!
