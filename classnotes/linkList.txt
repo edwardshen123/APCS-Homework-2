@@ -2,7 +2,7 @@ Global & Local Control
 
 Local: LinkList
 - LinkList: Collection of nodes where a node contain data and a way/link to 
-the next node
+the next node (must refer to a start node)
 - Forward moving information
 
 Global: array
