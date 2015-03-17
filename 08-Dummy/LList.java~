@@ -1,12 +1,16 @@
 public class LList{
-    private Node l=null;
+    private Node l=new Node("");
+    private int length = 0;
+    
     public void add(String s){
 	Node tmp = new Node(s);
 	tmp.setNext(l);
 	l = tmp;
+	length++;
     }
+    
     public String find(int n) {
-	if (n < 0) {
+	if (n < 0 || n > length) {
 	    return "Can't access";
 	}
 	int i = 0;
@@ -17,7 +21,11 @@ public class LList{
 	}
 	return tmp.toString();
     }
+
     public void insert(int n, String s) {
+	if (n < 0 || n > length) {
+	    return;
+	}
 	if (n == 0) {
 	    add(s);
 	} else {
@@ -31,7 +39,28 @@ public class LList{
 	    newNode.setNext(tmp.getNext());
 	    tmp.setNext(newNode);
 	}
+	length++;
     }
+
+    public Node remove(int n) {
+	if (n < 0 || length == 0) {
+	    return new Node("Can't remove");
+	}
+	if (n == 0) {
+	    l = l.getNext();
+	}
+	int index = n - 1;
+	Node tmp = l;
+	while (index > 0) {
+	    tmp = tmp.getNext();
+	    index--;
+	}
+	if (n == length) {
+	    tmp.setNext(null);
+	}
+	tmp.setNext(tmp.getNext().getNext());
+    }
+
     public String toString(){
 	String s = "";
 	Node tmp;
