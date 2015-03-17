@@ -1,6 +1,6 @@
 public class LList{
     private Node l;
-    private int length = -1;
+    private int length = 0;
 
     public LList() {
 	l = new Node("");
@@ -66,12 +66,14 @@ public class LList{
 
     public String toString(){
 	String s = "";
-	Node tmp;
-	for (tmp=l ; tmp!=null ; tmp=tmp.getNext()){
+	Node tmp = l;
+	int lCounter;
+	for (lCounter = length; lCounter > 0 ; lCounter--){
 	    s = s + tmp;
 	    if (tmp.getNext() != null) {
 		s = s + " --> ";
 	    }
+	    tmp=tmp.getNext();
 	}
 	return s;
     }
