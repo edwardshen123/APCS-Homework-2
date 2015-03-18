@@ -46,9 +46,9 @@ public class LList{
 	length++;
     }
 
-    public Node remove(int n) {
-	if (n < 0 || n >= length) {
-	    return new Node("Can't remove");
+    public String remove(int n) {
+	if (n < 0 || n > length) {
+	    return "Can't remove";
 	}
 	if (n == 0) {
 	    l = l.getNext();
@@ -61,7 +61,11 @@ public class LList{
 	}
 	Node removed = tmp.getNext();
 	tmp.setNext(tmp.getNext().getNext());
-	return removed;
+	return removed.toString();
+    }
+
+    public int length() {
+	return length;
     }
 
     public String toString(){
@@ -70,7 +74,7 @@ public class LList{
 	int lCounter;
 	for (lCounter = length; lCounter > 0 ; lCounter--){
 	    s = s + tmp;
-	    if (tmp.getNext() != null) {
+	    if (lCounter > 1) {
 		s = s + " --> ";
 	    }
 	    tmp=tmp.getNext();

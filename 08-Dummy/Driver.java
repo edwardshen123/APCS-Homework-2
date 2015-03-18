@@ -8,7 +8,7 @@ public class Driver{
 	}
 	System.out.println(l);
 	//System.out.println(l.find(5));
-	l.add(7, "hi");
+	l.add(l.length(), "hi");
 	//l.remove(5);
 	System.out.println(l);
     }
