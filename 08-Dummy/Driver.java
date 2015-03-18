@@ -1,10 +1,11 @@
 import java.util.Random;
 import java.util.LinkedList;
+import java.util.ArrayList;
 
 public class Driver{
     public static void main(String[] args) {
 	LList l = new LList();
-	LinkedList<int> ll = new LinkedList<int>();
+	LinkedList<Integer> ll = new LinkedList<Integer>();
 	long start, elapsed;
 	Random num = new Random();
 	/*
@@ -20,14 +21,22 @@ public class Driver{
 	System.out.println(l);
 	*/
 	for (int i = 0; i < 100000; i++) {
-	    //l.add(num.nextInt());
-	    ll.add(num.nextInt());
+	    int number = num.nextInt();
+	    l.add(number);
+	    ll.add(number);
 	}
 	int sum = 0;
 	//System.out.println(l.remove(2));
 	start = System.currentTimeMillis();
-	for (int i = 0; i < ll.length(); i++) {
+	for (int i = 0; i < ll.size(); i++) {
 	    sum += ll.get(i);
+	}
+	elapsed = System.currentTimeMillis() - start;
+	System.out.println(elapsed);
+	sum = 0;
+	start = System.currentTimeMillis();
+	for (int i = 0; i < l.length(); i++) {
+	    sum += l.get(i);
 	}
 	elapsed = System.currentTimeMillis() - start;
 	System.out.println(elapsed);
