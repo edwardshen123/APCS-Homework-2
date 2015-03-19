@@ -1,0 +1,7 @@
+cat: reads into the file
+command 1 | command 2: apply command 2 to command 1
+tr A-Z a-z: make everything to lower case
+sort: sort
+uniq: take uniq items
+uniq -c: count instances of item
+egrep (requisite): find all items with requisite
