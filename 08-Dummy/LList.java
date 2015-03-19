@@ -79,6 +79,22 @@ public class LList{
 	return false;
     }
 
+    /* Piggy Backing Pointers
+       public boolean remove(int i) {
+       Node T = l.getNext();
+       Node T2 = l;
+       while (T != null) {
+       if (T.getData() == n) {
+       T2.setNext(T.getNext());
+       return True;
+       }
+       T2 = T;
+       T = T.getNext();
+       }
+       return false;
+       }
+     */
+    
     public int length() {
 	return length;
     }
