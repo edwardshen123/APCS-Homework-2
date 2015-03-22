@@ -5,6 +5,7 @@ public class LLit<E> implements Iterator<E>{
     private Node<E> p;
     public LLit(Node<E> n){
 	t=n;
+	p=null;
     }
     
     public boolean hasNext(){
@@ -19,6 +20,8 @@ public class LLit<E> implements Iterator<E>{
     }
 
     public void remove() {
-	
+	if (p != null) {
+	    p.getPrevious().setNext(t);
+	}
     }
 }

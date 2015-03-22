@@ -12,17 +12,16 @@ public class LList<E> implements Iterable<E>{
 	return i;
     }
     
-    
-    
     public void add(E s){
 	Node<E> tmp = new Node<E>(s);
 	tmp.setNext(l.getNext());
+	tmp.setPrevious(l);
 	l.setNext(tmp);
     }
     
     public String toString(){
 	String s = "";
-	Node<E> tmp;;
+	Node<E> tmp;
 	for (tmp=l.getNext() ; tmp!=null ; tmp=tmp.getNext()){
 	    s = s + tmp + " --> ";
 	}
