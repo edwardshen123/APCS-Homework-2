@@ -1,3 +1,6 @@
 Stack
 ---------
 
+Usually: Last in first, First out (LIFO)
+
+Recursion: place call order on top, remove from top
