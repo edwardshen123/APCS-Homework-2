@@ -20,6 +20,13 @@ public class myQueue<E> {
     //remove and return front
     public E dequeue() {
 	if (!empty()) {
+	    Node tmp = front.getNext();
+	    Node next = tmp.getNext();
+	    front.setNext(next);
+	    next.setBefore(front);
+	    return (E)tmp.getData();
+	} else {
+	    return null;
 	}
     }
 
@@ -40,6 +47,7 @@ public class myQueue<E> {
 	    s += tmp.getData() + " ---> ";
 	    tmp = tmp.getNext();
 	}
+	s += tmp.getData();
 	return s;
     }
 
@@ -51,6 +59,9 @@ public class myQueue<E> {
 	    i++;
 	}
 	mq.enqueue(5);
+	mq.enqueue(6);
+	System.out.println(mq);
+	System.out.println(mq.dequeue());
 	System.out.println(mq);
     }
 }
