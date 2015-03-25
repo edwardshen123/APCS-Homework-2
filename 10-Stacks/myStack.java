@@ -1,6 +1,4 @@
-import java.util.*;
-
-public class myStack<E> implements Iterable<E>{
+public class myStack<E> {
 
     private Node<E> current;
 
@@ -8,21 +6,16 @@ public class myStack<E> implements Iterable<E>{
 	current = new Node<E>();
     }
 
-    public Iterator<E> iterator() {
-	coverNode n = new coverNode<E>(current.getBelow());
-	return n;
-    }
-
     public void push(E data) {
-	Node tmp = new Node(data);
+	Node<E> tmp = new Node<E>(data);
 	current.setAbove(tmp);
 	tmp.setBelow(current);
 	current = tmp;
     }
 
     public E pop() {
-	Node tmp = current;
-	Node next = current.getBelow();
+	Node<E> tmp = current;
+	Node<E> next = current.getBelow();
 	current = next;
 	current.setAbove(null);
 	return tmp.getData();
@@ -38,15 +31,12 @@ public class myStack<E> implements Iterable<E>{
 
     public String toString() {
 	String s = "";
-	Node tmp = current;
+	Node<E> tmp = current;
 	while (tmp.getBelow() != null) {
-	    s += tmp.getData() + "\n";
+	    s += tmp.getData() + " --> ";
 	    tmp = tmp.getBelow();
 	}
 	return s;
-    }
-    
-    public static void main(String[] args) {
     }
     
 }

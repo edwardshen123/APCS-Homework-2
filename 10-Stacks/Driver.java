@@ -4,12 +4,11 @@ public class Driver {
 	int i = 0;
 	while (i < 10) {
 	    ms.push(i);
+	    i++;
 	}
 	System.out.println(ms);
-	Iterator msi = ms.iterator();
-	while (msi.hasNext()) {
-	    System.out.println(msi.next());
-	    msi.remove();
+	while (!ms.empty()) {
+	    System.out.println(ms.pop());
 	}
 	System.out.println(ms);
     }
