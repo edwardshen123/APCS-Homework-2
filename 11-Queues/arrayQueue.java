@@ -15,9 +15,8 @@ public class arrayQueue {
     }
 
     public void enqueue(int data) {
-	calcLength();
-	if (length + 1 > a.length) {
-	    adjust();
+	if (full()) {
+	    adjust('a');
 	}
 	a[end] = data;
 	end++;
@@ -27,7 +26,7 @@ public class arrayQueue {
     public int dequeue() {
 	if (!empty()) {
 	    int tmp = a[front];
-	    adjust();
+	    adjust('d');
 	    end--;
 	    calcLength();
 	    return tmp;
@@ -40,8 +39,8 @@ public class arrayQueue {
 	return front == end;
     }
     
-    public void adjust() {
-	if (full()) {
+    public void adjust(char mode) {
+	if (mode == 'a') {
 	    int[] b = new int[a.length + 10];
 	    int i = 0;
 	    while (i < a.length) {
@@ -49,11 +48,12 @@ public class arrayQueue {
 		i++;
 	    }
 	    a = b;
-	} else {
+	}
+	if (mode == 'd') {
 	    int[] b = new int[a.length];
 	    int i = 0;
-	    while (i < length) {
-		b[i] = a[front + i];
+	    while (i < length - 1) {
+		b[i] = a[front + i + 1];
 		i++;
 	    }
 	    a = b;
@@ -65,7 +65,7 @@ public class arrayQueue {
     }
 
     public boolean full() {
-	return length == a.length;
+	return length >= a.length;
     }
     
     public String toString() {
@@ -75,11 +75,12 @@ public class arrayQueue {
     public static void main(String[] args) {
 	arrayQueue aq = new arrayQueue();
 	int i = 0;
-	while (i < 20) {
+	while (i < 10) {
 	    aq.enqueue(i);
 	    i++;
 	}
 	aq.dequeue();
+	aq.enqueue(11);
 	System.out.println(aq);
     }
 }
