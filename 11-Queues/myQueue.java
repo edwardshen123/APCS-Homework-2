@@ -61,7 +61,9 @@ public class myQueue<E> {
 	mq.enqueue(5);
 	mq.enqueue(6);
 	System.out.println(mq);
-	System.out.println(mq.dequeue());
+	for (i = 0; i < 12; i++) {
+		System.out.println(mq.dequeue());
+	}
 	System.out.println(mq);
     }
 }
