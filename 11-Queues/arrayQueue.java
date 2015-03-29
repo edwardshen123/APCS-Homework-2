@@ -13,7 +13,7 @@ public class arrayQueue {
 	end = 0;
 	length = 0;
     }
-
+    /* With data shift
     public void enqueue(int data) {
 	if (full()) {
 	    adjust('a');
@@ -33,10 +33,6 @@ public class arrayQueue {
 	} else {
 	    return -1;
 	}
-    }
-
-    public boolean empty() {
-	return front == end;
     }
     
     public void adjust(char mode) {
@@ -59,7 +55,44 @@ public class arrayQueue {
 	    a = b;
 	}
     }
+    */
 
+    //without data shift
+    public void enqueue(int data) {
+	if (reachedEnd()) {
+            adjust();
+        }
+        a[end] = data;
+        end++;
+        calcLength();
+    }
+    public int dequeue() {
+	if (!empty()) {
+	    int tmp = a[front];
+	    a[front] = -1;
+	    front++;
+	    calcLength();
+	    return tmp;
+	} else {
+	    return -1;
+	}
+    }
+    public void adjust() {
+	int[] b = new int[a.length + 10];
+	int i = 0;
+	while (i < a.length) {
+	    b[i] = a[i];
+	    i++;
+	}
+	a = b;
+    }
+
+    public boolean empty() {
+	return front == end;
+    }
+    public boolean reachedEnd() {
+	return end > length;
+    }
     public void calcLength() {
 	length = end - front;
     }
