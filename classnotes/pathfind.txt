@@ -57,3 +57,26 @@ alpha beta prune: takes the worst moves and toss them.
 
 - Explicit Data Structure
 	- Calling methods and ending methods
+
+Breath-first Search
+searching a block radius at a time
+a loop (not recursion)
+
+frontier - a queue (first in first out)
+
+while (!queue.empty()) {
+current = remove front node from frontier
+if (current is exit) {
+break
+}
+mark current as visited
+for each unprocessed neighbor N of current:
+mark N as processed
+add N to frontier
+}
+
+if the node was put in the front of queue: depth-first search
+	- frontier becomes a stack (First in Last out)
+
+Current : 1 node
+Frontier : queue
