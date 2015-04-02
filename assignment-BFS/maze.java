@@ -12,8 +12,7 @@ public class maze {
     private char visited = '.';
     private boolean solved = false;
 
-    private Nod e
-    private Node current;
+    private myQueue<boolean> frontier;
 		
     public void delay(int n){
 	try {
@@ -21,8 +20,7 @@ public class maze {
 	} catch (Exception e) {}
     }
 		
-    public Maze() 
-    {
+    public Maze() {
 	maxX=40;
 	maxY=20;
 	board = new char[maxX][maxY];
@@ -43,32 +41,45 @@ public class maze {
 	catch (Exception e) {
 	}			
     }
-		
-    public String toString()
-    {
-	String s = "[2J\n";
-				
-	for (int y=0;y<maxY;y++)
-	    {
-		for (int x=0;x<maxX;x++)
-		    s = s +board[x][y];
-		s=s+"\n";
-	    }
-	return s;
-    }
 
     /*
       solved - instance variable to indicate we're done
 			
     */
     public void solve(Node start){
-        
+	if (isExit(start)) solved = true;
+	while (solved == false) {
+	    if (isPath(start)) {
+		frontier.enqueue(start);
+	    }
+	}
+    }
+
+    public boolean isPath(Node n) {
+	return (n.getX() < maxX && n.getX() > 0 &&
+		n.getY() < maxY && n.getY() > 0 &&
+		board[n.getX()][n.getY()].equals(path));
+    }
+
+    public boolean isExit(Node n) {
+	return board[n.getX()][n.getY()].equals(exit);
+    }
+
+    public String toString() {
+	String s = "[2J\n";
+	
+	for (int y=0;y<maxY;y++) {
+	    for (int x=0;x<maxX;x++)
+		s = s +board[x][y];
+	    s=s+"\n";
+	}
+	return s;
     }
 		
     public static void main(String[] args){
 	Maze m = new Maze();
 	System.out.println(m);
-	m.solve(1,1);
+	m.solve(new Node());
 	System.out.println(m);
 		
     }

@@ -1,30 +1,28 @@
-public class myQueue<E> {
+public class myQueue {
 
     //Node
-    private Node<E> front;
-    private Node<E> end;
+    private Node front;
+    private Node end;
 
     public myQueue() {
-	front = new Node<E>();
+	front = new Node();
 	end = front;
     }
 
     //add to back of queue
-    public void enqueue(E data) {
-	Node<E> tmp = new Node<E>(data);
-	tmp.setBefore(end);
+    public void enqueue(int x, int y) {
+	Node tmp = new Node(x, y);
 	end.setNext(tmp);
 	end = tmp;
     }
 
     //remove and return front
-    public E dequeue() {
+    public Node dequeue() {
 	if (!empty()) {
 	    Node tmp = front.getNext();
 	    Node next = tmp.getNext();
 	    front.setNext(next);
-	    next.setBefore(front);
-	    return (E)tmp.getData();
+	    return tmp;
 	} else {
 	    return null;
 	}
@@ -36,18 +34,18 @@ public class myQueue<E> {
     }
 
     //return front
-    public E head() {
-	return (E)front.getNext().getData();
+    public Node head() {
+	return front.getNext();
     }
 
     public String toString() {
-	Node<E> tmp = front.getNext();
+	Node tmp = front.getNext();
 	String s = "";
 	while (tmp != end) {
-	    s += tmp.getData() + " ---> ";
+	    s += tmp.getProcessed() + " ---> ";
 	    tmp = tmp.getNext();
 	}
-	s += tmp.getData();
+	s += tmp.getProcessed();
 	return s;
     }
 }
