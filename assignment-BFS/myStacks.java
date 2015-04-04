@@ -1,22 +1,14 @@
-public class myQueue {
-
-    //Node
+public class myStacks {
+    
     private Node front;
-    private Node end;
 
-    public myQueue() {
+    public myStacks() {
 	front = null;
-	end = front;
     }
 
     public void enqueue(Node n) {
-	if (front == null) {
-	    front = n;
-	    end = front;
-	} else {
-	    end.setNext(n);
-	    end = n;
-	}
+	n.setNext(front);
+	front = n;
     }
 
     //add to back of queue
