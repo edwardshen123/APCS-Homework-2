@@ -6,7 +6,7 @@ public class Node{
     private boolean processed;
 
     public Node() {
-	this.Node(0, 0);
+	this(0, 0);
     }
     
     public Node(int x, int y) {
@@ -34,5 +34,4 @@ public class Node{
     public int getY() {
 	return y;
     }
-
 }
