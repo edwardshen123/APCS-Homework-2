@@ -52,42 +52,57 @@ public class maze {
 	if (isPath(start)) {
 	    frontier.enqueue(start.getX(), start.getY());
 	}
+	Node current = start;
+	//finds a path
 	while (solved == false && !frontier.empty()) {
 	    System.out.println(this);
-	    System.out.println(frontier);
-	    Node current = frontier.dequeue();
+	    current = frontier.dequeue();
 	    int x = current.getX();
 	    int y = current.getY();
 	    if (isExit(current)) {
 		solved = true;
-		board[x][y] = me;
+		board[x][y] = visited;
 	    } else {
-		board[x][y] = me;
+		board[x][y] = visited;
 		delay(100);
 		Node top = new Node(x, y - 1);
 		Node right = new Node(x + 1, y);
 		Node bottom = new Node(x, y + 1);
 		Node left = new Node(x - 1, y);
-		toEnqueue(top);
-		toEnqueue(right);
-		toEnqueue(bottom);
-		toEnqueue(left);
+		toEnqueue(top, current);
+		toEnqueue(right, current);
+		toEnqueue(bottom, current);
+		toEnqueue(left, current);
+	    }
+	}
+	if (solved) {
+	    Node tmp = current;
+	    //draws in correct path
+	    while (tmp != null) {
+		int x = tmp.getX();
+		int y = tmp.getY();
+		board[x][y] = me;
+		tmp = tmp.getBack();
 	    }
 	}
     }
 
-    public void toEnqueue(Node queued) {
+    //checks if node should be queued and queues it
+    public void toEnqueue(Node queued, Node current) {
 	if (isPath(queued) || isExit(queued)) {
 	    frontier.enqueue(queued);
+	    queued.setBack(current);
 	}
     }
 
+    //checks if node is a path
     public boolean isPath(Node n) {
 	return (n.getX() < maxX && n.getX() > 0 &&
 		n.getY() < maxY && n.getY() > 0 &&
 		board[n.getX()][n.getY()] == path);
     }
 
+    //checks if node is exit
     public boolean isExit(Node n) {
 	return board[n.getX()][n.getY()] == exit;
     }

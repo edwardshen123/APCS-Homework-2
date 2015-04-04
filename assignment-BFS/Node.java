@@ -1,19 +1,20 @@
 public class Node{
     private Node next;
 
+    private Node back;
+    private int dist;
+
     private int x, y;
     
-    private boolean processed;
-
     public Node() {
 	this(0, 0);
     }
     
     public Node(int x, int y) {
-	processed = false;
 	this.x = x;
 	this.y = y;
 	next = null;
+	back = null;
     }
 
     public Node getNext() {
@@ -22,11 +23,11 @@ public class Node{
     public void setNext(Node node) {
 	next = node;
     }
-    public boolean getProcessed() {
-	return processed;
+    public Node getBack() {
+	return back;
     }
-    public void setProcessed(boolean b) {
-	processed = b;
+    public void setBack(Node node) {
+	back = node;
     }
     public int getX() {
 	return x;
