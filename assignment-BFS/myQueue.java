@@ -2,22 +2,27 @@ public class myQueue {
 
     //Node
     private Node front;
+    private Node end;
 
     public myQueue() {
 	front = null;
+	end = front;
     }
 
     public void enqueue(Node n) {
-	Node tmp = n;
-	tmp.setNext(front);
-	front = tmp;
+	if (front == null) {
+	    front = n;
+	    end = front;
+	} else {
+	    end.setNext(n);
+	    end = n;
+	}
     }
 
     //add to back of queue
     public void enqueue(int x, int y) {
 	Node tmp = new Node(x, y);
-	tmp.setNext(front);
-	front = tmp;
+	enqueue(tmp);
     }
 
     //remove and return front
@@ -46,7 +51,7 @@ public class myQueue {
 	Node tmp = front.getNext();
 	String s = "";
 	while (tmp != null) {
-	    s += tmp.getProcessed() + " ---> ";
+	    s += "(" + tmp.getX() + "," + tmp.getY() + ") ---> ";
 	    tmp = tmp.getNext();
 	}
 	return s;

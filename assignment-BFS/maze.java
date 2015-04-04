@@ -53,39 +53,33 @@ public class maze {
 	    frontier.enqueue(start.getX(), start.getY());
 	}
 	while (solved == false && !frontier.empty()) {
+	    System.out.println(this);
+	    System.out.println(frontier);
 	    Node current = frontier.dequeue();
-	    current.setProcessed(true);
 	    int x = current.getX();
 	    int y = current.getY();
 	    if (isExit(current)) {
 		solved = true;
-		board[x][y] = visited;
+		board[x][y] = me;
 	    } else {
-		board[x][y] = visited;
+		board[x][y] = me;
 		delay(100);
-		System.out.println(this);
 		Node top = new Node(x, y - 1);
 		Node right = new Node(x + 1, y);
 		Node bottom = new Node(x, y + 1);
 		Node left = new Node(x - 1, y);
-		if (isPath(top)) {
-		    System.out.println(1);
-		    frontier.enqueue(top);
-		}
-		if (isPath(right)) {
-		    System.out.println(2);
-		    frontier.enqueue(right);
-		}
-		if (isPath(bottom)) {
-		    System.out.println(3);
-		    frontier.enqueue(bottom);
-		}
-		if (isPath(left)) {
-		    System.out.println(4);
-		    frontier.enqueue(left);
-		}
-		System.out.println(frontier);
+		toEnqueue(top);
+		toEnqueue(right);
+		toEnqueue(bottom);
+		toEnqueue(left);
 	    }
+	    current.setProcessed(true);
+	}
+    }
+
+    public void toEnqueue(Node queued) {
+	if (isPath(queued) || isExit(queued)) {
+	    frontier.enqueue(queued);
 	}
     }
 
