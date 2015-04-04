@@ -73,7 +73,6 @@ public class maze {
 		toEnqueue(bottom);
 		toEnqueue(left);
 	    }
-	    current.setProcessed(true);
 	}
     }
 
