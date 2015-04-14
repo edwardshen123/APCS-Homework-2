@@ -80,3 +80,29 @@ if the node was put in the front of queue: depth-first search
 
 Current : 1 node
 Frontier : queue
+
+Blind Search - BFS, DFS
+Heuristic Search - A*, BFS, Dijkstra
+
+Heuristic
+Maze
+--------
+ ###
+z#   $
+ #####
+ #   #
+ #####
+
+Frontier:
+Placing the node that is closer to the frontier in the front
+
+Best-First Search
+-> frontier is a priority Queue (things are removed based on priority)
+	-> ex: insert in order based on priority and remove from frontier
+	or insert at end, remove by searching for max/min priority
+Priority is a simple to compute value that you hope sets you at the exit path
+
+Simple heuristic - Euclidean Distance (pythagorean) or manhattan distance (x + y)
+
+A*
+Priority/cost = cost to get to here + estimate to goal
