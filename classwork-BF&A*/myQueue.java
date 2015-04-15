@@ -14,6 +14,7 @@ public class myQueue {
 	    front = n;
 	    end = front;
 	} else {
+	    n.setBack(end);
 	    end.setNext(n);
 	    end = n;
 	}
@@ -36,7 +37,7 @@ public class myQueue {
 	    return null;
 	}
     }
-
+    
     //check if queue is empty
     public boolean empty() {
 	return front == null;
