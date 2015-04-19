@@ -68,10 +68,10 @@ public class maze {
 	    } else {
 		board[x][y] = visited;
 		delay(100);
-		Node top = new Node(x, y - 1, mandist(x, y - 1));
-		Node right = new Node(x + 1, y, mandist(x + 1, y));
-		Node bottom = new Node(x, y + 1, mandist(x, y + 1));
-		Node left = new Node(x - 1, y, mandist(x - 1, y));
+		Node top = new Node(x, y - 1, pydist(x, y - 1));
+		Node right = new Node(x + 1, y, pydist(x + 1, y));
+		Node bottom = new Node(x, y + 1, pydist(x, y + 1));
+		Node left = new Node(x - 1, y, pydist(x - 1, y));
 		toEnqueue(top, current);
 		toEnqueue(right, current);
 		toEnqueue(bottom, current);
@@ -99,7 +99,6 @@ public class maze {
 	//finds a path
 	while (solved == false && !frontier.empty()) {
 	    System.out.println(this);
-	    System.out.println(frontier);
 	    current = frontier.dequeue();
 	    int x = current.getX();
 	    int y = current.getY();
@@ -108,15 +107,15 @@ public class maze {
 		board[x][y] = visited;
 	    } else {
 		board[x][y] = visited;
-		delay(400);
-		Node top = new Node(x, y - 1, current.getcsn() + 1, mandist(x, y - 1));
-		Node right = new Node(x + 1, y, current.getcsn() + 1, mandist(x + 1, y));
-		Node bottom = new Node(x, y + 1, current.getcsn() + 1, mandist(x, y + 1));
-		Node left = new Node(x - 1, y, current.getcsn() + 1, mandist(x - 1, y));
+		Node top = new Node(x, y - 1, current.getcsn() + 1, pydist(x, y - 1));
+		Node right = new Node(x + 1, y, current.getcsn() + 1, pydist(x + 1, y));
+		Node bottom = new Node(x, y + 1, current.getcsn() + 1, pydist(x, y + 1));
+		Node left = new Node(x - 1, y, current.getcsn() + 1, pydist(x - 1, y));
 		toEnqueue(top, current);
 		toEnqueue(right, current);
 		toEnqueue(bottom, current);
 		toEnqueue(left, current);
+		delay(100);
 	    }
 	}
 	if (solved) {
@@ -186,8 +185,8 @@ public class maze {
     public static void main(String[] args){
 	maze m = new maze();
 	System.out.println(m);
-	//m.BFS(new Node(1, 1, m.mandist(1, 1)));
-	m.aStar(new Node(1, 1, m.mandist(1, 1)));
+	m.BFS(new Node(1, 1, m.pydist(1, 1)));
+	//m.aStar(new Node(1, 1, m.pydist(1, 1)));
 	System.out.println(m);
 		
     }

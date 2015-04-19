@@ -69,6 +69,7 @@ public class myQueue {
 	    prev.setNext(insert);
 	    insert.setBefore(prev);
 	    insert.setNext(next);
+	    end = insert;
 	} else {
 	    prev.setNext(insert);
 	    insert.setBefore(prev);
