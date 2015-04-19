@@ -53,47 +53,7 @@ public class maze {
     public void BFS(Node start){
 	if (isExit(start)) solved = true;
 	if (isPath(start)) {
-	    frontier.enqueue(start.getX(), start.getY());
-	}
-	Node current = start;
-	//finds a path
-	while (solved == false && !frontier.empty()) {
-	    System.out.println(this);
-	    current = frontier.dequeue();
-	    int x = current.getX();
-	    int y = current.getY();
-	    if (isExit(current)) {
-		solved = true;
-		board[x][y] = visited;
-	    } else {
-		board[x][y] = visited;
-		delay(100);
-		Node top = new Node(x, y - 1);
-		Node right = new Node(x + 1, y);
-		Node bottom = new Node(x, y + 1);
-		Node left = new Node(x - 1, y);
-		toEnqueue(top, current);
-		toEnqueue(right, current);
-		toEnqueue(bottom, current);
-		toEnqueue(left, current);
-	    }
-	}
-	if (solved) {
-	    Node tmp = current;
-	    //draws in correct path
-	    while (tmp != null) {
-		int x = tmp.getX();
-		int y = tmp.getY();
-		board[x][y] = me;
-		tmp = tmp.getBack();
-	    }
-	}
-    }
-
-    public void aStar(Node start) {
-	if (isExit(start)) solved = true;
-	if (isPath(start)) {
-	    frontier.enqueue(start.getX(), start.getY());
+	    frontier.enqueue(start);
 	}
 	Node current = start;
 	//finds a path
@@ -129,6 +89,46 @@ public class maze {
 	    }
 	}
     }
+
+    public void aStar(Node start) {
+	if (isExit(start)) solved = true;
+	if (isPath(start)) {
+	    frontier.enqueue(start);
+	}
+	Node current = start;
+	//finds a path
+	while (solved == false && !frontier.empty()) {
+	    System.out.println(this);
+	    current = frontier.dequeue();
+	    int x = current.getX();
+	    int y = current.getY();
+	    if (isExit(current)) {
+		solved = true;
+		board[x][y] = visited;
+	    } else {
+		board[x][y] = visited;
+		delay(100);
+		Node top = new Node(x, y - 1, current.getcsn() + 1, mandist(x, y - 1));
+		Node right = new Node(x + 1, y, current.getcsn() + 1, mandist(x + 1, y));
+		Node bottom = new Node(x, y + 1, current.getcsn() + 1, mandist(x, y + 1));
+		Node left = new Node(x - 1, y, current.getcsn() + 1, mandist(x - 1, y));
+		toEnqueue(top, current);
+		toEnqueue(right, current);
+		toEnqueue(bottom, current);
+		toEnqueue(left, current);
+	    }
+	}
+	if (solved) {
+	    Node tmp = current;
+	    //draws in correct path
+	    while (tmp != null) {
+		int x = tmp.getX();
+		int y = tmp.getY();
+		board[x][y] = me;
+		tmp = tmp.getBack();
+	    }
+	}
+    }
     
     public void findExit() {
 	for (int i = 0; i < maxX; i++) {
@@ -145,15 +145,15 @@ public class maze {
 	return (exitX - x) + (exitY - y);
     }
 
-    public int pydist(int x, int y) {
-	return Math.sqrt(Math.sq(exitX - x) + Math.sq(exitY - y));
+    public double pydist(int x, int y) {
+	return Math.sqrt(Math.pow(exitX - x, 2) + Math.pow(exitY - y, 2));
     }
     
     //checks if node should be queued and queues it
-    public void toEnqueue(Node queued, Node current) {
+    public void toEnqueue(Node queued, Node traceback) {
 	if (isPath(queued) || isExit(queued)) {
 	    frontier.enqueue(queued);
-	    queued.setBack(current);
+	    queued.setBack(traceback);
 	}
     }
 
@@ -185,7 +185,8 @@ public class maze {
     public static void main(String[] args){
 	maze m = new maze();
 	System.out.println(m);
-	m.BFS(new Node(1, 1));
+	//m.BFS(new Node(1, 1, m.mandist(1, 1)));
+	m.aStar(new Node(1, 1, m.mandist(1, 1)));
 	System.out.println(m);
 		
     }
