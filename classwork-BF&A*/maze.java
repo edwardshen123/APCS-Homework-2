@@ -99,6 +99,7 @@ public class maze {
 	//finds a path
 	while (solved == false && !frontier.empty()) {
 	    System.out.println(this);
+	    System.out.println(frontier);
 	    current = frontier.dequeue();
 	    int x = current.getX();
 	    int y = current.getY();
@@ -107,7 +108,7 @@ public class maze {
 		board[x][y] = visited;
 	    } else {
 		board[x][y] = visited;
-		delay(100);
+		delay(400);
 		Node top = new Node(x, y - 1, current.getcsn() + 1, mandist(x, y - 1));
 		Node right = new Node(x + 1, y, current.getcsn() + 1, mandist(x + 1, y));
 		Node bottom = new Node(x, y + 1, current.getcsn() + 1, mandist(x, y + 1));
@@ -145,8 +146,8 @@ public class maze {
 	return (exitX - x) + (exitY - y);
     }
 
-    public double pydist(int x, int y) {
-	return Math.sqrt(Math.pow(exitX - x, 2) + Math.pow(exitY - y, 2));
+    public int pydist(int x, int y) {
+	return (int)Math.sqrt(Math.pow(exitX - x, 2) + Math.pow(exitY - y, 2));
     }
     
     //checks if node should be queued and queues it
