@@ -16,7 +16,7 @@ public class maze {
     private static final char visited = '.';
     private boolean solved = false;
 
-    private myQueue frontier = new myQueue();
+    private priorityQueue frontier = new priorityQueue();
 		
     public void delay(int n){
 	try {

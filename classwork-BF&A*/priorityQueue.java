@@ -1,4 +1,4 @@
-public class myQueue {
+public class priorityQueue {
 
     private int length;
 
@@ -6,7 +6,7 @@ public class myQueue {
     private Node front;
     private Node end;
 
-    public myQueue() {
+    public priorityQueue() {
 	front = null;
 	end = front;
 	length = 0;
