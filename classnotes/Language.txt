@@ -37,3 +37,56 @@ n^3
 n^4
 2^n - try all possibilities
 n!
+
+graphs - collection of nodes and edges
+vertex node - holds stuff
+edge - connects nodes
+connected component - nodes hold together by edges
+
+cyclic
+B-C
+| |
+A-D
+
+acyclic
+B-A
+ /|
+D C
+
+
+Graphs can have weights - edges will have values (weight)
+Directed Graph - Directed acyclic graph
+A -> B
+|    |
+v    v
+C -> D
+
+ 6
+|->|
+A  B
+|<-|
+ 5
+
+Tree - restricts a graph
+Tree: empty or acyclic graph with one node designated as the root
+	Root - starting point
+	Child - connected to end 1 level down from its parent node
+
+	nodes can be both child and parent types, only root is only parent node
+	root
+	 O
+        /|\
+       O O O
+      child nodes
+
+	leaf - a node w/out children
+	path - the sequence of nodes and 
+	ancestors
+	descendents
+	subtrees
+	siblings - children of same parent
+	height - height of the tree
+	fullness
+	balance
+
+Binary Tree: each node has 0, 1, or 2 children
