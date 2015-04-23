@@ -90,3 +90,44 @@ Tree: empty or acyclic graph with one node designated as the root
 	balance
 
 Binary Tree: each node has 0, 1, or 2 children
+
+Doubly Linked List
+O<->O<->O
+Binary Tree
+   O
+  / \
+ O   O
+
+Binary Search Tree: 
+	A binary tree when given the value v in any node n, 
+	all the values in n's left subtree is less than v 
+	and all the values in n's right subtree are greater
+
+	to search for a value (two ways)
+	- can search as binary
+	- search as recursion
+
+	ex:
+	while (T != null) {
+		int c = T.getData().compareTo(i);
+		if (c==0) return T;
+		else if (c>0) T = T.getRight();
+		else T = T.getLeft(); 
+	}
+	return null;
+
+	Building binary search tree:
+		insert -
+			Node n = new Node(data)
+			if (T == null) T = n;
+
+	problem: there are many locations to place a node
+	solution: run search algorithm to node 
+	and place the node in that location
+	with a following pointer to place the node in that location
+
+			1) set T = root
+			2) search for n but use a following pointer T2 to follow T
+			3) T2 now points to new node parent
+			4) Insert the new node to the left or right of T2 as appropriate
+
