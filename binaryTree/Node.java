@@ -1,4 +1,4 @@
-public class Node implements Comparable{
+public class Node {
     private int data;
     private Node left, right;
 
@@ -13,6 +13,7 @@ public class Node implements Comparable{
     }
 
     public int compareTo(int i) {
+	return data - i;
     }
 
     public int getData() {
@@ -33,5 +34,8 @@ public class Node implements Comparable{
     }
     public Node getRight() {
 	return right;
+    }
+    public String toString() {
+	return "" + data;
     }
 }

@@ -1,0 +1,12 @@
+import java.util.ArrayList;
+public class nodeArray {
+
+    private ArrayList<Node> nodes = new ArrayList<Node>();
+
+    public void add(Node n) {
+	nodes.add(n);
+    }
+    public Node get(int index) {
+	nodes.get(index);
+    }
+}
