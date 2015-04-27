@@ -131,3 +131,7 @@ Binary Search Tree:
 			3) T2 now points to new node parent
 			4) Insert the new node to the left or right of T2 as appropriate
 
+
+Tree Recursion:
+	Maze, Binary Sort
+List within a list - tree
