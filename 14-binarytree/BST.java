@@ -48,16 +48,12 @@ public class BST{
 	    t2.setLeft(n);
     }
 
-    //fix traverse
+    //In-Order Traversal (prints all data set in order)
     public String traverse(Node t){
 	if (t == null) {
 	    return "null";
 	} else {
-	    String base = "" + t.getData();
-	    String left = "" + traverse(t.getLeft());
-	    String right = "" + traverse(t.getRight());
-	    String newline = "\n";
-	    return base + newline + left + " " + right;
+	    return traverse(t.getLeft()) + ", " + t.getData() + ", " + traverse(t.getRight());
 	}
     }
     public String toString(){

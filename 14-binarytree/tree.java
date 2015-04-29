@@ -24,7 +24,6 @@ public class tree{
 	return T;
     }
 
-    //broken
     public void insert(int i) {
 	Node tmp = new Node(i);
 	if (root == null) {
@@ -81,6 +80,7 @@ public class tree{
     
     public String toString() {
 	createLayers();
+	int maxDepth = nodes.size();
 	String s = "";
 	for (int i = 0; i < nodes.size(); i++) {
 	    s += nodes.get(i) + "\n";
