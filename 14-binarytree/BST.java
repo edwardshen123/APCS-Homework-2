@@ -48,6 +48,46 @@ public class BST{
 	    t2.setLeft(n);
     }
 
+    /*
+      Remove
+      1) Use search to get pointer T to node to be removed and T2 to its parent
+      2)
+        a) T is a leaf, point T2's left or right to null
+	b) T has 1 child, point T2's left or right to its non-null child
+	c)
+	  1) T has 2 children, find largest on left subtree ( or smallest on right) L = T.getLeft() while (L.getRight()!=null) L = L.getRight();
+	  2) Copy the data from L into T
+	  3) Remove (T.getLeft(), L.getData())
+     */
+    public void remove(node root, int remove) {
+	//The Search
+	Node t2=null;
+	Node t = root;
+	while (t!=null){
+	    t2 = t;
+	    if (t.getData()==remove)
+		break;
+	    else if (t.getData() < remove)
+		t=t.getRight();
+	    else if (t.getData() > remove)
+		t=t.getLeft();
+	    else
+		break;
+	}
+	if (t != null) {
+	    //The Remove
+	    if (t.getLeft() != null && t.getRight() != null) {
+	    } else if (t.getLeft() != null) {
+		if (t2.getLeft() == t) t2.setLeft(t.getLeft());
+		else t2.setRight(t.getLeft());
+	    } else if (t.getRight() != null) {
+	    } else {
+		if (t2.getLeft() == t) t2.setLeft(null);
+		else t2.setRight(null);
+	    }
+	}
+    }
+
     //In-Order Traversal (prints all data set in order)
     public String traverse(Node t){
 	if (t == null) {
