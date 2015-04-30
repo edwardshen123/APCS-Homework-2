@@ -135,3 +135,20 @@ Binary Search Tree:
 Tree Recursion:
 	Maze, Binary Sort
 List within a list - tree
+
+
+     Array | Linked List | Binary Tree
+Search O(n) | O(n) | O(n) (if degenerate into list)
+       O(lg n) | .. | O(lg n) (if full)
+Remove O(n) | O(1) | same as search
+       .. | O(n) |
+Insert O(n) | like remove | same as search
+Traverse O(n) | O(n) | O(n)
+
+Types of tree
+Red-Black Tree
+2-3 Tree
+B-Tree: each parent has alot of child nodes (used by databases b/c complex but
+lasting)
+Splay Tree: binary search tree but not guaranteed full or balanced
+everytime searched, the tree is rotated so the searched node becomes root 
