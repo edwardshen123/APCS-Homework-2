@@ -1,6 +1,7 @@
 import java.io.*;
 import java.util.*;
 public class BST{
+    //root of the tree
     Node r;
     
     public Node search(Node t, int i){
@@ -59,33 +60,45 @@ public class BST{
 	  2) Copy the data from L into T
 	  3) Remove (T.getLeft(), L.getData())
      */
-    public void remove(node root, int remove) {
+    public void remove(Node root, int removed) {
 	//The Search
 	Node t2=null;
 	Node t = root;
 	while (t!=null){
-	    t2 = t;
-	    if (t.getData()==remove)
+	    if (t.getData()==removed)
 		break;
-	    else if (t.getData() < remove)
-		t=t.getRight();
-	    else if (t.getData() > remove)
-		t=t.getLeft();
-	    else
-		break;
+	    else {
+		t2 = t;
+		if (t.getData() < removed)
+		    t=t.getRight();
+		else if (t.getData() > removed)
+		    t=t.getLeft();
+	    }
 	}
 	if (t != null) {
 	    //The Remove
 	    if (t.getLeft() != null && t.getRight() != null) {
+		Node L = t.getRight();
+		while (L.getLeft() != null) {
+		    L = L.getLeft();
+		}
+		t = L;
+		remove(t.getRight(), L.getData());
 	    } else if (t.getLeft() != null) {
 		if (t2.getLeft() == t) t2.setLeft(t.getLeft());
 		else t2.setRight(t.getLeft());
 	    } else if (t.getRight() != null) {
+		if (t2.getLeft() == t) t2.setLeft(t.getRight());
+		else t2.setRight(t.getRight());
 	    } else {
 		if (t2.getLeft() == t) t2.setLeft(null);
 		else t2.setRight(null);
 	    }
 	}
+    }
+
+    public void remove(int removed) {
+	remove(r, removed);
     }
 
     //In-Order Traversal (prints all data set in order)
@@ -108,8 +121,10 @@ public class BST{
 	    //System.out.println(z);
 	    t.insert(z);
 	}
+	t.insert(0);
 	System.out.println(t);
-	//t.insert(30);
+	t.remove(0);
+	System.out.println(t);
     }
 }
 
