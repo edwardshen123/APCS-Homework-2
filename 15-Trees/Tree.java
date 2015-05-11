@@ -1,7 +1,8 @@
+import java.util.Random;
+
 public class Tree {
 
     private Node root;
-    private Node T2;
 
     public Tree() {
 	root = null;
@@ -26,19 +27,54 @@ public class Tree {
 	while (tmp.getRight() != null) {
 	    tmp = tmp.getRight();
 	}
-	return tmp.getValue();
+	return tmp.getData();
+    }
+
+    public int height() {
+	return height(root);
     }
 
     //Finds height (longest root to leaf path)
     public int height(Node t) {
+	if (t == null) {
+	    return 0;
+	} else {
+	    return 1 + Math.max(height(t.getLeft()), height(t.getRight()));
+	}
     }
 
     //Creates a Node of value one less to split two dupes
-    public Node splitDupes(Node t) {
+    public void splitDupes(Node t) {
+	if (t != null) {
+	    Node leftChild = t.getLeft();
+	    Node rightChild = t.getRight();
+	    Node dupeSpliter = new Node(t.getData() - 1);
+	    if (t.getData() == leftChild.getData()) {
+		t.setLeft(dupeSpliter);
+		dupeSpliter.setRight(leftChild);
+	    }
+	    if (t.getData() == rightChild.getData()) {
+		t.setRight(dupeSpliter);
+		dupeSpliter.setRight(rightChild);
+	    }
+	    splitDupes(t.getLeft());
+	    splitDupes(t.getRight());
+	}
+    }
+
+    public int longest() {
+	return longest(root);
     }
 
     //Finds longest leaf to leaf path
     public int longest(Node t) {
+	if (t == null) {
+	    return 0;
+	}
+	int rootDiameter = 1 + height(t.getLeft()) + height(t.getRight());
+	int leftDiameter = longest(t.getLeft());
+	int rightDiameter = longest(t.getRight());
+	return Math.max(rootDiameter, Math.max(leftDiameter, rightDiameter));
     }
 
     public Node search(Node t, int i){
@@ -51,7 +87,7 @@ public class Tree {
     }
     
     public String search(int i){
-	Node retval = search(r,i);
+	Node retval = search(root,i);
 	if (retval==null)
 	    return "Not Found";
 	else
@@ -61,9 +97,9 @@ public class Tree {
     public void insert(int i){
 	Node n = new Node(i);
 	Node t2=null;
-	Node t = r;
-	if (r==null){
-	    r=n;
+	Node t = root;
+	if (t==null){
+	    root=n;
 	    return;
 	}
 	
@@ -135,7 +171,7 @@ public class Tree {
     }
 
     public void remove(int removed) {
-	remove(r, removed);
+	remove(root, removed);
     }
 
     //In-Order Traversal (prints all data set in order)
@@ -147,11 +183,11 @@ public class Tree {
 	}
     }
     public String toString(){
-	return traverse(r);
+	return traverse(root);
     }
     
     public static void main(String[] args){
-	BST t = new BST();
+	Tree t = new Tree();
 	Random r = new Random();
 	for (int i = 0; i < 20; i ++){
 	    int z = r.nextInt(100);
@@ -160,7 +196,7 @@ public class Tree {
 	}
 	t.insert(0);
 	System.out.println(t);
-	t.remove(0);
-	System.out.println(t);
+	System.out.println(t.height());
+	System.out.println(t.longest());
     }
 }
