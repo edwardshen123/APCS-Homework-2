@@ -62,18 +62,18 @@ public class Tree {
 	}
     }
 
-    public int longest() {
-	return longest(root);
+    public int diameter() {
+	return diameter(root);
     }
 
     //Finds longest leaf to leaf path
-    public int longest(Node t) {
+    public int diameter(Node t) {
 	if (t == null) {
 	    return 0;
 	}
 	int rootDiameter = 1 + height(t.getLeft()) + height(t.getRight());
-	int leftDiameter = longest(t.getLeft());
-	int rightDiameter = longest(t.getRight());
+	int leftDiameter = diameter(t.getLeft());
+	int rightDiameter = diameter(t.getRight());
 	return Math.max(rootDiameter, Math.max(leftDiameter, rightDiameter));
     }
 
@@ -197,6 +197,6 @@ public class Tree {
 	t.insert(0);
 	System.out.println(t);
 	System.out.println(t.height());
-	System.out.println(t.longest());
+	System.out.println(t.diameter());
     }
 }
