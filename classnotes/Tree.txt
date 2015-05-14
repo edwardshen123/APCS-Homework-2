@@ -41,3 +41,28 @@ Node properties
      - given Node n, n's children are always at 2n, 2n + 1, and n's parent at int(n/2)
      - Given these property, Heap is stored as array
        - Heap is left to right fullness is to pack array with no wasted space
+
+Heap pushdown in array
+for (i = end of array to 0) {
+pushDown ar;
+}
+
+Build heap O(n)
+put everything into arr.
+
+sort in linear time
+take the last element of the arr and swap with the root. Pushdown root. Move on to 2nd to last element. And so on.
+
+reduceKey
+- Finds a node
+- Updates its priority
+- Merit in the queue if needed pushdown or siftup for a heap to avoid starvation
+
+Finding medium of a set w/ heaps
+
+keep heaps same size
+
+maxHeap                                   minHeap
+80, 88, 70, 75, 85                        90, 95, 99
+
+to keep heap in same size, remove max of maxHeap and place into minHeap or visa-versa

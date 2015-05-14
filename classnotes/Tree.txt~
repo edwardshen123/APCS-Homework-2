@@ -1,9 +1,0 @@
-      3--|
-     /   |
-    8    15
-   / \   / \
-  12 10 18 25
- / \  /
-36 19 11
-
-A binary tree where every parent is smaller than either child
