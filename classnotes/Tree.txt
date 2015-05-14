@@ -1,0 +1,43 @@
+      3--|
+     /   |
+    8    15
+   / \   / \
+  12 10 18 25
+ / \  /
+36 19 11
+
+Data Structure - Heap (not the memory, Heap)
+
+Data Type - Min Heap (root always holds smallest value)
+
+Properties
+1) Binary Tree
+2) Every parent is smaller than either child
+3) No left, Right Property
+4) As full as possible from left to right
+
+findMin() - O(1)
+removeMin() - O(lg n)
+heapSort() - O(nlg(n))
+insert() - O(lg(n))
+create() - O(nlg(n))
+
+removeMin() {
+1) Pull off the root
+2) Move lowest rightest value to root
+3) Pushdown (root)
+   - if current node has no children, pushdown over
+   - if current node has one child, check if heap property is broken, then swap current node's value and child value, sift down child
+   - if current node has two children, find smallest of them. If heap property is broken, then swap curretn node's value and selected child value, sift down child
+}
+
+insert() {
+1) Add new node to lowest leftest new position
+2) Sift-Up (like pushdown but moving up)
+}
+
+Node properties
+     - Nodes are numbered
+     - given Node n, n's children are always at 2n, 2n + 1, and n's parent at int(n/2)
+     - Given these property, Heap is stored as array
+       - Heap is left to right fullness is to pack array with no wasted space
