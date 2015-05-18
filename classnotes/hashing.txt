@@ -1,0 +1,13 @@
+hashing/hash table
+
+Purpose: store data in a table (array) by some unique ID
+
+A Hash Function is a mapping that takes an id and converts it into a table index
+ex: id = OSIS#; h(x) = x%1000
+
+Issue: when multiple IDs hash to the same table index -> collision or clash
+Solution: 
+hash table must be large enough so its sparsely populated
+try to have a good hash function to distribute IDs all over the array
+
+Dictionary: example of hash table
