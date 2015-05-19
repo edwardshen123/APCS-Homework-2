@@ -11,3 +11,32 @@ hash table must be large enough so its sparsely populated
 try to have a good hash function to distribute IDs all over the array
 
 Dictionary: example of hash table
+
+Forms of Hashing:
+      Closed Hashing
+      	     - Everything is stored in the table (array)
+
+	     Collision Solution: 1) Rehashing (have two hash functions)
+	     	       		 2) Linear Probing (if slot full, look for next available slot) [better if array is sparse b/c probing and deletion is easier]
+				 3) Leave extra room in the table by using a multiplier in the hash function [to leave extra space for probing]
+				    - Con: Table is bigger, doesn't give room b/c multiplier is k (doesn't provide if need more room than k)
+
+		Insert- Expected O(1)
+			Worst case O(n)
+		Retrieval- Expected O(1)
+	   		   Worst case O(n)
+		Deletion- ? maybe O(1), O(n)
+		Search- O(n) size of table
+		Traversal- O(n) size of table
+
+	Open Hashing
+	     - Each array slot refers to a linked list that contains all the elements that hash to that slot
+
+	     - No collision problem
+
+	     Insert- Always O(1); always insert to front of linked list
+	     Retrieval- Expected O(1)
+	     		Worst Case O(n) with respect to # of elements in slot
+
+
+Java built-in Hash Table: HashMap, TreeMap
