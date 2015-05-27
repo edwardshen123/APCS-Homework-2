@@ -1,0 +1,15 @@
+Dijkstra's Algorithm
+
+A* Star with weighted path
+
+- Single Source Shortest Path Algorithm
+
+Initial: @ Start node in solution set
+Implementation:
+	- Use a heap to store weight, from A to every node
+Algorithm:
+	1) Grab node with lowest cost/weight and add to solution set
+	2) For each node in heap
+		cost = min(Old cost, 
+			cost to get to new node in SS 
+			+ cost from new node in SS to this node)
